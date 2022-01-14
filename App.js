@@ -18,7 +18,7 @@ export default class App extends React.Component {
   //async componentWillMount() {
   async ssf(tab) {
     const doc = new GoogleSpreadsheet(
-      "1Iq5rc5p8f4fFcocxjKvPtW6XseZvB3u3y7XIgAWNh7g"
+      "16n4UlzdUCXEJ3kF3AquHobkjN7OKbGSojVYv9AYUo84"
     );
     let thesheet = 0;
     try {
@@ -68,6 +68,7 @@ export default class App extends React.Component {
     var title_b = "";
     var description_b = "";
     var channel_b = "";
+    var comment = "";
     if (this.state.hasOwnProperty("cur_row") & typeof this.state.cur_row !== 'undefined') {
       id_a = this.state.cur_row.id_a;
       title_a = this.state.cur_row.title_a;
@@ -77,6 +78,7 @@ export default class App extends React.Component {
       title_b = this.state.cur_row.title_b;
       description_b = this.state.cur_row.description_b;
       channel_b = this.state.cur_row.channel_b;
+      comment = this.state.cur_row.comment;
     }
     return (
       <View
@@ -116,6 +118,24 @@ export default class App extends React.Component {
             </Text>
             <Videoinfo name={title_a} channel={channel_a} description={description_a} id={id_a} />
             
+          </View>
+          <View
+            style={[
+              styles.container,
+              {
+                flexDirection: "column",
+                justifyContent: "space-around",
+                //flex: 1,
+                //backgroundColor: "red",
+              },
+
+            ]}
+          >
+            <Text>
+              Comment: {comment} {"\n"}{"\n"}
+              Video link 1: <a href={"https://www.youtube.com/watch?v=" + id_a} target="_blank">https://www.youtube.com/watch?v={id_a}</a>{"\n"}
+              Video link 2: <a href={"https://www.youtube.com/watch?v=" + id_b} target="_blank">https://www.youtube.com/watch?v={id_b}</a>{"\n"}
+            </Text>
           </View>
           <View
             style={[
